@@ -1,0 +1,24 @@
+{
+  "name": "jscomps",
+  "version": "0.0.1",
+  "description": "Chunk ES5 JavaScript into small easily scalable components",
+  "main": "jscomps.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hamzaalalach/jscomps.git"
+  },
+  "keywords": [
+    "ES5",
+    "JavaScript",
+    "components"
+  ],
+  "author": "Hamza Alalach",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hamzaalalach/jscomps/issues"
+  },
+  "homepage": "https://github.com/hamzaalalach/jscomps#readme"
+}
