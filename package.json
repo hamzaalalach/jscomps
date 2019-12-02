@@ -1,6 +1,6 @@
 {
   "name": "jscomps",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Chunk ES5 JavaScript into small easily scalable components",
   "main": "jscomps.js",
   "scripts": {
@@ -19,6 +19,9 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/hamzaalalach/jscomps/issues"
+  },
+  "bin": {
+    "jscomps": "./jscomps.js"
   },
   "homepage": "https://github.com/hamzaalalach/jscomps#readme",
   "dependencies": {

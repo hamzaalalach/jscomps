@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const fs = require('fs'),
 	uglifyjs = require('uglify-js'),
 	path = require('path'),
@@ -5,32 +7,32 @@ const fs = require('fs'),
 	.usage('Usage: $0 [options]')
 	.options({
 		'f': {
-			describe: 'Component folder to watch',
+			describe: 'Component folder to watch.',
 			type: 'string',
 			demandeOption: true,
 			nargs: 1
 		},
 		'o': {
-			describe: 'Custom output file',
+			describe: 'Custom output file.',
 			type: 'string',
 			demandeOption: false,
 			nargs: 1
 		},
 		'i': {
-			describe: 'Custom input file',
+			describe: 'Custom input file.',
 			type: 'string',
 			demandeOption: false,
 			nargs: 1
 		},
 		'm': {
-			describe: 'Minify and compress output file',
+			describe: 'Minify and compress output file.',
 			default: true,
 			boolean: true,
 			demandeOption: false,
 			nargs: 1
 		}
 	})
-	.demandOption(['f'], "Please provide -f to be able to continue")
+	.demandOption(['f'], "Please provide -f to be able to continue.")
 	.example('$0 -f public/js/dashbaord')
 	.example('$0 -f public/js/dashbaord -m false')
     .alias('h', 'help')
