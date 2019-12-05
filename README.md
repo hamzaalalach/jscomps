@@ -27,3 +27,32 @@ JSComp is a lightweight solution to enable components support on Vanilla JS.
   
 ```
 ## Examples
+Consider we are in the following folder:
+```
+    js/
+       dashboard/
+         dashboard.js
+         header.js
+         nav.js
+         sideBar.js
+
+```
+Each of the files has the following content:
+- header.js:
+```    console.log("Header script is running..."); ```
+- nav.js:
+```    console.log("Nav script is running..."); ```
+- sideBar.js:
+```    console.log("Sidebar script is running..."); ```
+
+Our import file, which is dashboard.js the same as our component folder's name, should look like this:
+```
+    import "header";
+    import "nav";
+    import "sideBar"
+```
+We can now watch for changes and automatically concat and compress our component running the following command:
+```     
+    jscomps -f js/dashboard
+```
+We can make a small change to any of the 3 pieces to trigger the change detection, and the output would be ```dashboard.min.js``` which you can simply add to your HTML.
