@@ -1,6 +1,6 @@
 # jscomps
 
-JSComp is a lightweight solution to enable components support on Vanilla JS.
+JSComps is a lightweight solution to enable components support on Vanilla JS.
 
 #### Note:
 - JSComps is a CLI package, check usage below.
@@ -13,7 +13,7 @@ Using JSComps give your the following perks:
 - It's easy to use. You don't have to run it each time you make a change to a file, it'll automatically detect changes for you and import the mto your output file.
 
 ## Install
-    npm install jscomps -g
+ npm install jscomps -g
 
 ## Usage
     jscomps [options]
@@ -36,12 +36,12 @@ Using JSComps give your the following perks:
 ## Examples
 Consider we are in the following folder:
 ```
-    js/
-       dashboard/
-         dashboard.js
-         header.js
-         nav.js
-         sideBar.js
+  js/
+     dashboard/
+       dashboard.js
+       header.js
+       nav.js
+       sideBar.js
 
 ```
 Each of the files has the following content:
@@ -54,29 +54,36 @@ Each of the files has the following content:
 
 Our import file, which is dashboard.js the same as our component folder's name, should look like this:
 ```
-    import "header";
-    import "nav";
-    import "sideBar"
+ import "header";
+ import "nav";
+ import "sideBar"
 ```
 We can now watch for changes and automatically concat our component pieces running the following command:
 ```     
-    jscomps -f js/dashboard -m false
+ jscomps -f js/dashboard -m false
 ```
 Making any change to the 3 pieces of our component will trigger the output file to be generated ```dashboard.min.js ``` in the dashoard folder, containing the following code:
 
 ```
-    console.log("Header script is running...");
-    console.log("Nav script is running...");
-    console.log("Sidebar script is running...");
+ console.log("Header script is running...");
+ console.log("Nav script is running...");
+ console.log("Sidebar script is running...");
 ```
 
 To compress the output code simply remove the -m parameter as it is by default set to true:
 ```
-    jscomps -f js/dashboard
+ jscomps -f js/dashboard
 ```
 
 To provide a custom input and/or output file path, use the -o and -i commands:
 ```
-    jscomps -f js/dashboard -i js/dashboard/index.js -o js/dashboard.js
-
+ jscomps -f js/dashboard -i js/dashboard/index.js -o js/dashboard.js
 ```
+
+The best way to use JSComps is to add it to your package.json file like this: 
+```
+  "scripts": {
+    "jscomps:dashboard": "jscomps -f public/js/dashboard"
+  }
+```
+Then your run it easily like this:  ` npm run jscomps:dashboard `
