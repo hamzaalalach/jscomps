@@ -1,0 +1,1 @@
+console.log("Hi there! I'm part one of your beautiful component.");
