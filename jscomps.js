@@ -13,13 +13,13 @@ const fs = require('fs'),
 			nargs: 1
 		},
 		'o': {
-			describe: 'Custom output file.',
+			describe: 'Custom output file path.',
 			type: 'string',
 			demandeOption: false,
 			nargs: 1
 		},
 		'i': {
-			describe: 'Custom input file.',
+			describe: 'Custom input file path.',
 			type: 'string',
 			demandeOption: false,
 			nargs: 1
@@ -32,7 +32,7 @@ const fs = require('fs'),
 			nargs: 1
 		}
 	})
-	.demandOption(['f'], "Please provide -f to be able to continue.")
+	.demandOption(['f'], "Please provide a folder to watch.")
 	.example('$0 -f public/js/dashbaord')
 	.example('$0 -f public/js/dashbaord -m false')
     .alias('h', 'help')
@@ -40,31 +40,37 @@ const fs = require('fs'),
 	.help()
 	.argv;
 
-var fsWait = false,
+let fsWait = false,
 	inputPath,
-	outputPath;
+	outputPath,
+	folderName;
 
-if (!fs.lstatSync(argv.f).isDirectory()) {
-	console.log("No folders match, please try again!");
+const setup = (folderName, cb) => {
+	fs.stat(argv.f, (err, stats) => {
+		if (err || !stats.isDirectory()) {
+			cb(false);
+		} else {
+			folderName = path.basename(argv.f);
+			if (argv.f[argv.f.length - 1] == '/') {
+				argv.f = argv.f.substr(0, argv.f.length - 1);
+			}
+			if (argv.i) {
+				inputPath = argv.i;
+			} else {
+				inputPath = argv.f + '/' + folderName + '.js';
+			}
+			if (argv.o) {
+				outputPath = argv.o;
+			} else {
+				outputPath = argv.f + '/' + folderName + '.min.js';
+			}
+			cb(true);
+		}
+	});
 }
-start(path.basename(argv.f));
 
-function start(folder) {
-	if (argv.f[argv.f.length - 1] == '/') {
-		argv.f = argv.f.substr(0, argv.f.length - 1);
-	}
-	if (argv.i) {
-		inputPath = argv.i;
-	} else {
-		inputPath = argv.f + '/' + folder + '.js';
-	}
-	if (argv.o) {
-		outputPath = argv.o;
-	} else {
-		outputPath = argv.f + '/' + folder + '.min.js';
-	}
-	console.log('Waiting for changes...');
-	fs.watch(argv.f, function(event) {
+const start = folderPath => {
+	fs.watch(folderPath, function(event) {
 		if (event === 'change') {
 			if (fsWait) return;
 			fsWait = setTimeout(() => {
@@ -79,8 +85,17 @@ function start(folder) {
 			}
 			fs.writeFile(outputPath, result, function(err) {
 				if (err) throw err;
-				console.log("Files imported");
+				console.log("Files imported.");
 			});
 		}
 	});
 }
+
+setup(null, (ok) => {
+	if (ok) {
+		start(argv.f);
+		console.log('Waiting for changes...');
+	} else {
+		console.log("Not a valid watch folder.");
+	}
+});
