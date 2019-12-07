@@ -1,19 +1,19 @@
 # jscomps
 
-JSComps is a lightweight solution to enable components support on Vanilla JS.
+JSComps is a lightweight solution to enable components support on Vanilla JS. <br /><br />
 
 #### Note:
-- JSComps is a CLI package, check usage below.
+- JSComps is a CLI package, check usage below.<br />
 
 #### Why not just create multiple HTML files and link them to HTML instead?
 Using JSComps give your the following perks:
 
 - It generates one simple file as input giving multiple as input, by linking only one external JS file, you're reducing your HTTP requests, making your app faster and more performent.
 - It makes your app easily scalable. You can address each part of your website with JavaScript individually, making it easy to focus on and edit your code, and expanding its functionalities at ease.
-- It's easy to use. You don't have to run it each time you make a change to a file, it'll automatically detect changes for you and import the mto your output file.
+- It's easy to use. You don't have to run it each time you make a change to a file, it'll automatically detect changes for you and import the mto your output file.<br /><br />
 
 ## Install
- npm install jscomps -g
+    npm install jscomps -g
 
 ## Usage
     jscomps [options]
