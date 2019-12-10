@@ -3,10 +3,10 @@
 JSComps is a lightweight solution to enable components support on Vanilla JS. <br /><br />
 
 #### Note:
-- JSComps is a CLI package, check usage below.<br />
+- JSComps is a CLI package, check usage below.<br /><br />
 
 #### Why not just create multiple HTML files and link them to HTML instead?
-Using JSComps give your the following perks:
+Using JSComps gives your the following perks:
 
 - It generates one simple file as input giving multiple as input, by linking only one external JS file, you're reducing your HTTP requests, making your app faster and more performent.
 - It makes your app easily scalable. You can address each part of your website with JavaScript individually, making it easy to focus on and edit your code, and expanding its functionalities at ease.
@@ -26,6 +26,7 @@ Using JSComps give your the following perks:
 ```
 
   -f             Component folder to watch.                        [string] [required]
+  -w             Watch a directory for changes.              [boolean] [default: true]
   -o             Custom output file path.                                     [string]
   -i             Custom input file path.                                      [string]
   -m             Minify and compress output file.            [boolean] [default: true]
@@ -36,21 +37,27 @@ Using JSComps give your the following perks:
 ## Examples
 Consider we are in the following folder:
 ```
-  js/
-     dashboard/
-       dashboard.js
-       header.js
-       nav.js
-       sideBar.js
+ js/
+    dashboard/
+      dashboard.js
+      header.js
+      nav.js
+      sideBar.js
 
 ```
 Each of the files has the following content:
 - header.js:
-```    console.log("Header script is running..."); ```
+```
+ console.log("Header script is running...");
+```
 - nav.js:
-```    console.log("Nav script is running..."); ```
+```
+ console.log("Nav script is running...");
+```
 - sideBar.js:
-```    console.log("Sidebar script is running..."); ```
+```    
+ console.log("Sidebar script is running...");
+```
 
 Our import file, which is dashboard.js the same as our component folder's name, should look like this:
 ```
@@ -62,7 +69,7 @@ We can now watch for changes and automatically concat our component pieces runni
 ```     
  jscomps -f js/dashboard -m false
 ```
-Making any change to the 3 pieces of our component will trigger the output file to be generated ```dashboard.min.js ``` in the dashoard folder, containing the following code:
+Making any change to the 3 pieces of our component will trigger the output file to be generated ```dashboard.min.js```  in the dashboard folder, containing the following code:
 
 ```
  console.log("Header script is running...");
@@ -73,6 +80,10 @@ Making any change to the 3 pieces of our component will trigger the output file 
 To compress the output code simply remove the -m parameter as it is by default set to true:
 ```
  jscomps -f js/dashboard
+```
+We can stop watching for changes and use the command only once:
+```
+ jscomps -f js/dashboard -w false
 ```
 
 To provide a custom input and/or output file path, use the -o and -i commands:
