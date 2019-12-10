@@ -4,7 +4,7 @@
   "description": "Chunk ES5 JavaScript into small easily scalable components",
   "main": "jscomps.js",
   "scripts": {
-    "test": ""
+    "test": "jest"
   },
   "repository": {
     "type": "git",

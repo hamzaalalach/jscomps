@@ -105,8 +105,8 @@ const start = () => {
 setup(null, (ok) => {
 	if (ok) {
 		if (argv.w) {
-			startAndWatch(argv.f);
 			console.log('Waiting for changes...');
+			startAndWatch(argv.f);
 		} else {
 			start();
 		}
