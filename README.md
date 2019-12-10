@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/hamzaalalach/jscomps.svg?branch=master)](https://travis-ci.org/hamzaalalach/jscomps)<br />
 # jscomps
 
 JSComps is a lightweight solution to enable components support on Vanilla JS. <br /><br />
