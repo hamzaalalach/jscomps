@@ -13,7 +13,8 @@
   "keywords": [
     "ES5",
     "JavaScript",
-    "components"
+    "components",
+    "cli"
   ],
   "author": "Hamza Alalach",
   "license": "MIT",

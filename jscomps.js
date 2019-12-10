@@ -12,6 +12,13 @@ const fs = require('fs'),
 			demandeOption: true,
 			nargs: 1
 		},
+		'w': {
+			describe: 'Watch a directory for changes.',
+			default: true,
+			boolean: true,
+			demandeOption: false,
+			nargs: 1
+		},
 		'o': {
 			describe: 'Custom output file path.',
 			type: 'string',
@@ -69,32 +76,40 @@ const setup = (folderName, cb) => {
 	});
 }
 
-const start = folderPath => {
+const startAndWatch = folderPath => {
 	fs.watch(folderPath, function(event) {
 		if (event === 'change') {
 			if (fsWait) return;
 			fsWait = setTimeout(() => {
 				fsWait = false;
 			}, 1000);
-			let result;
-			if (argv.m) {
-				result = uglifyjs.minify((require('import')(inputPath)), {compress: true}).code;
-				if (result.error) console.log(result.error);
-			} else {
-				result = require('import')(inputPath);
-			}
-			fs.writeFile(outputPath, result, function(err) {
-				if (err) throw err;
-				console.log("Files imported.");
-			});
 		}
+		start();
+	});
+}
+
+const start = () => {
+	let result;
+	if (argv.m) {
+		result = uglifyjs.minify((require('import')(inputPath)), {compress: true}).code;
+		if (result.error) console.log(result.error);
+	} else {
+		result = require('import')(inputPath);
+	}
+	fs.writeFile(outputPath, result, function(err) {
+		if (err) throw err;
+		console.log("Files imported.");
 	});
 }
 
 setup(null, (ok) => {
 	if (ok) {
-		start(argv.f);
-		console.log('Waiting for changes...');
+		if (argv.w) {
+			startAndWatch(argv.f);
+			console.log('Waiting for changes...');
+		} else {
+			start();
+		}
 	} else {
 		console.log("Not a valid watch folder.");
 	}
