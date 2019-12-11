@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/hamzaalalach/jscomps.svg?branch=master)](https://travis-ci.org/hamzaalalach/jscomps)<br />
+[![Build Status](https://travis-ci.org/hamzaalalach/jscomps.svg?branch=master)](https://travis-ci.org/hamzaalalach/jscomps) ![NPM](https://img.shields.io/npm/l/jscomps) ![npm](https://img.shields.io/npm/v/jscomps) ![GitHub last commit](https://img.shields.io/github/last-commit/hamzaalalach/jscomps) <br />
 # jscomps
 
 JSComps is a lightweight solution to enable components support on Vanilla JS. <br /><br />
