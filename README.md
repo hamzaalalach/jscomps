@@ -1,17 +1,17 @@
 [![Build Status](https://travis-ci.org/hamzaalalach/jscomps.svg?branch=master)](https://travis-ci.org/hamzaalalach/jscomps) ![NPM](https://img.shields.io/npm/l/jscomps) ![npm](https://img.shields.io/npm/v/jscomps) ![GitHub last commit](https://img.shields.io/github/last-commit/hamzaalalach/jscomps) <br />
 # jscomps
 
-JSComps is a lightweight solution to enable components support on Vanilla JS. <br /><br />
+  JSComps is a lightweight solution to enable components support on Vanilla JS. <br /><br />
 
 #### Note:
-- JSComps is a CLI package, check usage below.<br /><br />
+  JSComps is a CLI package, check usage below.<br /><br />
 
 #### Why not just create multiple HTML files and link them to HTML instead?
 Using JSComps gives your the following perks:
 
 - It generates one simple file as input giving multiple as input, by linking only one external JS file, you're reducing your HTTP requests, making your app faster and more performent.
 - It makes your app easily scalable. You can address each part of your website with JavaScript individually, making it easy to focus on and edit your code, and expanding its functionalities at ease.
-- It's easy to use. You don't have to run it each time you make a change to a file, it'll automatically detect changes for you and import the mto your output file.<br /><br />
+- It's easy to use. You don't have to run it each time you make a change to a file, it'll automatically detect changes for you and import them to your output file.<br /><br />
 
 ## Install
     npm install jscomps -g
@@ -19,7 +19,7 @@ Using JSComps gives your the following perks:
 ## Usage
     jscomps [options]
 
-  JSComps takes a folder as input and it works as the components container, it detects changes in it, if any made it'll import all the components into the minified output file. By default, the imports should be contained in the provided folder under the same name, and the output looks like this: providedfoldername.min.js. See examples below.
+   JSComps takes a folder as input and it works as the components container, it detects changes in it, if any made it'll import all the components into the minified output file. By default, the imports should be contained in the provided folder under the same name, and the output looks like this: providedfoldername.min.js. See examples below.
   
   
 ## Options
@@ -64,7 +64,7 @@ Our import file, which is dashboard.js the same as our component folder's name, 
 ```
  import "header";
  import "nav";
- import "sideBar"
+ import "sideBar";
 ```
 We can now watch for changes and automatically concat our component pieces running the following command:
 ```     
