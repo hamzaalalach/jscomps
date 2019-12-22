@@ -52,27 +52,29 @@ let fsWait = false,
 	outputPath,
 	folderName;
 
-const setup = (folderName, cb) => {
-	fs.stat(argv.f, (err, stats) => {
-		if (err || !stats.isDirectory()) {
-			cb(false);
-		} else {
-			folderName = path.basename(argv.f);
-			if (argv.f[argv.f.length - 1] == '/') {
-				argv.f = argv.f.substr(0, argv.f.length - 1);
-			}
-			if (argv.i) {
-				inputPath = argv.i;
+const setup = (folderName) => {
+	return new Promise(function(resolve, reject) {
+		fs.stat(argv.f, (err, stats) => {
+			if (err || !stats.isDirectory()) {
+				reject();
 			} else {
-				inputPath = argv.f + '/' + folderName + '.js';
+				folderName = path.basename(argv.f);
+				if (argv.f[argv.f.length - 1] == '/') {
+					argv.f = argv.f.substr(0, argv.f.length - 1);
+				}
+				if (argv.i) {
+					inputPath = argv.i;
+				} else {
+					inputPath = argv.f + '/' + folderName + '.js';
+				}
+				if (argv.o) {
+					outputPath = argv.o;
+				} else {
+					outputPath = argv.f + '/' + folderName + '.min.js';
+				}
+				resolve();
 			}
-			if (argv.o) {
-				outputPath = argv.o;
-			} else {
-				outputPath = argv.f + '/' + folderName + '.min.js';
-			}
-			cb(true);
-		}
+		});
 	});
 }
 
@@ -102,15 +104,11 @@ const start = () => {
 	});
 }
 
-setup(null, (ok) => {
-	if (ok) {
-		if (argv.w) {
-			console.log('Waiting for changes...');
-			startAndWatch(argv.f);
-		} else {
-			start();
-		}
+setup().then(() => {
+	if (argv.w) {
+		console.log('Waiting for changes...');
+		startAndWatch(argv.f);
 	} else {
-		console.log("Not a valid watch folder.");
+		start();
 	}
-});
+}).catch(() => console.log("Not a valid watch folder."));
