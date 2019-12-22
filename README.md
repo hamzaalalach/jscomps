@@ -14,7 +14,15 @@ Using JSComps gives your the following perks:
 - It's easy to use. You don't have to run it each time you make a change to a file, it'll automatically detect changes for you and import them to your output file.<br /><br />
 
 ## Install
-    npm install jscomps -g
+```
+npm install jscomps -g
+```
+  OR
+```
+yarn add jscomps
+```
+
+<br>
 
 ## Usage
     jscomps [options]
