@@ -1,6 +1,6 @@
 {
   "name": "jscomps",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Chunk ES5 JavaScript into small easily scalable components",
   "main": "jscomps.js",
   "scripts": {
