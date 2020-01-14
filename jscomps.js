@@ -3,6 +3,7 @@
 const fs = require('fs'),
 	uglifyjs = require('uglify-js'),
 	path = require('path'),
+	chalk = require('chalk'),
 	argv = require('yargs')
 	.usage('Usage: $0 [options]')
 	.options({
@@ -106,9 +107,10 @@ const start = () => {
 
 setup().then(() => {
 	if (argv.w) {
-		console.log('Waiting for changes...');
+		console.log(chalk.green('Watching folder: ' + chalk.white(argv.f)));
+		console.log(chalk.green('Waiting for changes...'));
 		startAndWatch(argv.f);
 	} else {
 		start();
 	}
-}).catch(() => console.log("Not a valid watch folder."));
+}).catch(() => console.log(chalk.red("Not a valid watch folder.")));
