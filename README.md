@@ -9,6 +9,7 @@
 [![Build Status](https://travis-ci.org/hamzaalalach/jscomps.svg?branch=master)](https://travis-ci.org/hamzaalalach/jscomps) ![NPM](https://img.shields.io/npm/l/jscomps) 
 ![npm](https://img.shields.io/npm/v/jscomps) 
 ![GitHub last commit](https://img.shields.io/github/last-commit/hamzaalalach/jscomps)
+![GitHub stars](https://img.shields.io/github/stars/hamzaalalach/jscomps?style=social)
 
 
 ## Description
@@ -25,7 +26,7 @@ npm install jscomps -g
 yarn add jscomps
 ```
 
-<br><br>
+<br>
 
 ## Usage
     jscomps [options]
