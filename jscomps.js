@@ -41,8 +41,8 @@ const fs = require('fs'),
 		}
 	})
 	.demandOption(['f'], "Please provide a folder to watch.")
-	.example('$0 -f public/js/dashbaord')
-	.example('$0 -f public/js/dashbaord -m false')
+	.example('$0 -f example')
+	.example('$0 -f example -m false -w false -o exampleoutput.js')
     .alias('h', 'help')
     .alias('v', 'version')
 	.help()
