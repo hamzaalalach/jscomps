@@ -9,11 +9,10 @@
 [![Build Status](https://travis-ci.org/hamzaalalach/jscomps.svg?branch=master)](https://travis-ci.org/hamzaalalach/jscomps) ![NPM](https://img.shields.io/npm/l/jscomps) 
 ![npm](https://img.shields.io/npm/v/jscomps) 
 ![GitHub last commit](https://img.shields.io/github/last-commit/hamzaalalach/jscomps)
-![GitHub stars](https://img.shields.io/github/stars/hamzaalalach/jscomps?style=social)
 
 
 ## Description
-   JSComps helps you chunk Vanilla JS into small and scalable components. It takes a folder as input which works as the components container, it detects changes in it, if any made it'll automaticaly import all the parts into the minified output file. By default, the imports should be contained in the provided folder under the same name, and the output looks like this: providedfoldername.min.js. [See examples below.](#examples) <br><br>
+   JSComps helps you chunk Vanilla JS into small and scalable components. It takes a folder as input which works as the components container, it detects changes in it, if any made it'll automatically import all the parts into the minified output file. By default, the imports should be contained in the provided folder under the same name, and the output looks like this: providedfoldername.min.js. [See examples below.](#examples) <br><br>
    
    
 ## Install
@@ -25,6 +24,11 @@ npm install jscomps -g
 ```bash
 yarn add jscomps
 ```
+<br>
+
+## Recent changes
+  - New command: --iife, wraps the entire output code in a IIFE, default value: false. 🆕
+  - Logging improved: Mention which file triggered the change. 📝
 
 <br>
 
@@ -38,11 +42,12 @@ yarn add jscomps
 
 ```text
 
-  -f             Component folder to watch.                        [string] [required]
+  -f             Component folder.                                 [string] [required]
   -w             Watch a directory for changes.              [boolean] [default: true]
   -o             Custom output file path.                                     [string]
   -i             Custom input file path.                                      [string]
   -m             Minify and compress output file.            [boolean] [default: true]
+  --iife         Wrap output code in an IIFE.               [boolean] [default: false]
   -h, --help     Show help.                                                  [boolean]
   -v, --version  Show version number.                                        [boolean]
   
@@ -79,7 +84,7 @@ The import file, which is dashboard.js by default, should look like this:
  import "nav";
  import "sideBar";
 ```
-We can now watch for changes and automatically concat our component pieces running the following command:
+We can now watch for changes and automatically concatenate our component pieces running the following command:
 ```bash
  jscomps -f js/dashboard -m false
 ```
@@ -105,13 +110,18 @@ To provide a custom input and/or output file path, use the -o and -i commands:
  jscomps -f js/dashboard -i js/dashboard/index.js -o js/dashboard.js
 ```
 
+If you like to wrap the output code in an IIFE, use --iife command:
+```bash
+ jscomps -f js/dashboard --iife true
+```
+
 The best way to use JSComps is to add it to your package.json file like this: 
 ```json
   "scripts": {
     "jscomps:dashboard": "jscomps -f public/js/dashboard"
   }
 ```
-Then your run it easily like this:  ` npm run jscomps:dashboard ` <br><br>
+Then you simply run:  ` npm run jscomps:dashboard ` <br><br>
 
 ## Versioning
 
