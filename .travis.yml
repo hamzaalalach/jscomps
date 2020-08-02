@@ -1,3 +1,8 @@
 language: node_js
 node_js:
   - 12
+script:
+  - snyk test
+  - npm run test
+after_success:
+  - snyk monitor
