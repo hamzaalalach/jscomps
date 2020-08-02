@@ -27,7 +27,6 @@
   "homepage": "https://github.com/hamzaalalach/jscomps#readme",
   "dependencies": {
     "chalk": "^3.0.0",
-    "import": "0.0.6",
     "uglify-js": "^3.7.0",
     "yargs": "^15.0.2"
   },

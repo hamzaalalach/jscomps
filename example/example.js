@@ -1,3 +1,3 @@
-import "partOne";
-import "partTwo";
-import "partThree";
+import 'partOne';
+import 'partTwo';
+import 'partThree';

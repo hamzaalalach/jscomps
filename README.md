@@ -27,8 +27,8 @@ yarn add jscomps
 <br>
 
 ## Recent changes
-  - New command: --iife, wraps the entire output code in a IIFE, default value: false. 🆕
-  - Logging improved: Mention which file triggered the change. 📝
+  - Outputting result code strange behavior fixed.
+  - Performence improved.
 
 <br>
 
