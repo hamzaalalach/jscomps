@@ -1,6 +1,10 @@
 language: node_js
 node_js:
   - 12
+before_install:
+  - npm i -g snyk
+install:
+  - npm i
 script:
   - snyk test
   - npm run test
